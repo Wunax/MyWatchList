@@ -15,7 +15,6 @@ import { AuthService } from './auth.service';
 import { SanitizeMongooseModelInterceptor } from 'nestjs-mongoose-exclude';
 
 @Controller('auth')
-@UseInterceptors(ClassSerializerInterceptor)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
