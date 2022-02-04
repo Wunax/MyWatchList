@@ -52,6 +52,11 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
+  server: {
+    host: '0.0.0.0',
+    port: 8080,
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
