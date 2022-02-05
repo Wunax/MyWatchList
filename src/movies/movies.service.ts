@@ -12,6 +12,7 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { UsersService } from '../users/users.service';
 import { UpdateMovieDto } from './dto/update-movie.dto';
+import { SearchMovieDto } from './dto/search-movie.dto';
 
 @Injectable()
 export class MoviesService {
@@ -112,5 +113,45 @@ export class MoviesService {
       (movie: MovieDocument) => movie._id.toString() !== id,
     );
     await user.save();
+  }
+
+  async getPopularsMovies(page: number, lang: string) {
+    let urlTmdbApi = `https://api.themoviedb.org/3/movie/popular?api_key=${this.configService.get<string>(
+      'TMDB_API_KEY',
+    )}`;
+    if (lang) {
+      urlTmdbApi += `&language=${lang}`;
+    }
+    if (page) {
+      urlTmdbApi += `&page=${page}`;
+    }
+    try {
+      const res = await lastValueFrom(this.httpService.get(urlTmdbApi));
+      return res.data;
+    } catch (err) {
+      throw new BadRequestException({ message: 'An error has occurred' });
+    }
+  }
+
+  async searchMovies(
+    searchMovieDto: SearchMovieDto,
+    page: number,
+    lang: string,
+  ) {
+    let urlTmdbApi = `https://api.themoviedb.org/3/search/movie?api_key=${this.configService.get<string>(
+      'TMDB_API_KEY',
+    )}&query=${encodeURI(searchMovieDto.search)}`;
+    if (lang) {
+      urlTmdbApi += `&language=${lang}`;
+    }
+    if (page) {
+      urlTmdbApi += `&page=${page}`;
+    }
+    try {
+      const res = await lastValueFrom(this.httpService.get(urlTmdbApi));
+      return res.data;
+    } catch (err) {
+      throw new BadRequestException({ message: 'An error has occurred' });
+    }
   }
 }

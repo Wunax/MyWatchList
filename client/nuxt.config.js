@@ -29,6 +29,7 @@ export default {
     '~/plugins/vue-toastification',
     '~/plugins/language',
     '~/plugins/vue-cookies',
+    '~/plugins/vue-infinite-loading',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -57,22 +58,26 @@ export default {
     detectBrowserLanguage: false,
     locales: [
       {
-        code: 'fr',
+        code: 'fr-FR',
         name: 'Français',
       },
       {
-        code: 'en',
+        code: 'en-US',
         name: 'English',
       },
     ],
-    defaultLocale: 'fr',
+    defaultLocale: 'fr-FR',
     vueI18n: {
-      fallbackLocale: 'fr',
+      fallbackLocale: 'fr-FR',
       messages: {
-        fr: require('./locales/fr.json'),
-        en: require('./locales/en.json'),
+        'fr-FR': require('./locales/fr-FR.json'),
+        'en-US': require('./locales/en-US.json'),
       },
     },
+  },
+
+  eslint: {
+    cache: false,
   },
 
   router: {

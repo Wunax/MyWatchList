@@ -18,6 +18,17 @@
       "emailAlreadyExists": "Un compte existe déjà avec cette email"
     }
   },
+  "navbar": {
+    "movies":  "Films",
+    "watchlist": "Ma watchlist",
+    "seen": "Films regardés",
+    "logout": "Déconnexion"
+  },
+  "movies": {
+    "popular": "Films populaires",
+    "search": "Rechercher un film",
+    "results": "Résultats de la recherche pour '{search}'"
+  },
   "errors": {
     "internalError": "Une erreur interne est survenue"
   }

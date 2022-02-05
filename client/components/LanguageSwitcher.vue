@@ -17,7 +17,7 @@
 
     <div
       v-show="showLang"
-      class="absolute flex flex-col justify-center shadow-xl rounded-md"
+      class="absolute flex flex-col justify-center shadow-xl rounded-md z-10"
     >
       <label
         v-for="lang in $i18n.locales"
@@ -53,8 +53,8 @@ export default {
     switchLocale(code) {
       this.$i18n.setLocale(code);
       this.showLang = !this.showLang;
-      const localesVeeValidate = { fr, en };
-      localize(code, localesVeeValidate.code);
+      const localesVeeValidate = { 'fr-FR': fr, 'en-US': en };
+      localize(code, localesVeeValidate[code]);
       localStorage.setItem('lang', code);
     },
   },

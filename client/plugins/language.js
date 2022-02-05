@@ -14,6 +14,6 @@ export default function ({ app }) {
     localStorageLang = app.i18n.defaultLocale;
   }
   app.i18n.setLocale(localStorageLang);
-  const localesVeeValidate = { fr, en };
-  localize(localStorageLang, localesVeeValidate.localStorageLang);
+  const localesVeeValidate = { 'fr-FR': fr, 'en-US': en };
+  localize(localStorageLang, localesVeeValidate[localStorageLang]);
 }

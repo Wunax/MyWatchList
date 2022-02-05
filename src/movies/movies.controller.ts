@@ -14,6 +14,7 @@ import { Request } from 'express';
 import { MoviesService } from './movies.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
+import { SearchMovieDto } from './dto/search-movie.dto';
 
 @Controller('movies')
 export class MoviesController {
@@ -42,5 +43,19 @@ export class MoviesController {
   @Delete(':id')
   remove(@Param('id') id: string, @Req() req: Request) {
     return this.moviesService.remove(id, req.user.sub);
+  }
+
+  @Get('/populars')
+  getPopularsMovies(@Query('page') page, @Query('lang') lang) {
+    return this.moviesService.getPopularsMovies(page, lang);
+  }
+
+  @Post('/search')
+  searchMovies(
+    @Query('page') page,
+    @Query('lang') lang,
+    @Body() searchMovieDto: SearchMovieDto,
+  ) {
+    return this.moviesService.searchMovies(searchMovieDto, page, lang);
   }
 }

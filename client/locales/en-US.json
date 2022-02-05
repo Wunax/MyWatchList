@@ -18,6 +18,17 @@
       "emailAlreadyExists": "An account already exists with this email"
     }
   },
+  "navbar": {
+    "movies":  "Movies",
+    "watchlist": "My watchlist",
+    "seen": "Movies seen",
+    "logout": "Logout"
+  },
+  "movies": {
+    "popular": "Popular movies",
+    "search": "Search a movie",
+    "results": "Search results for '{search}'"
+  },
   "errors": {
     "internalError": "An internal error has occurred"
   }
