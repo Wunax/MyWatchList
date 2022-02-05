@@ -8,6 +8,10 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   const configService = app.get(ConfigService);
   app.setGlobalPrefix('api');
+  // Only enable cors in development since our frontend will be serve in the same domain during production
+  if (configService.get<string>('NODE_ENV') !== 'production') {
+    app.enableCors();
+  }
   const port = configService.get<string>('PORT') || 3000;
   await app.listen(port);
 }
