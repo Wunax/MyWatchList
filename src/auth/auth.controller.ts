@@ -1,7 +1,6 @@
 import {
   BadRequestException,
   Body,
-  ClassSerializerInterceptor,
   ConflictException,
   Controller,
   HttpCode,
@@ -15,7 +14,9 @@ import { AuthService } from './auth.service';
 import { SanitizeMongooseModelInterceptor } from 'nestjs-mongoose-exclude';
 import { ConfigService } from '@nestjs/config';
 import * as dayjs from 'dayjs';
+import { Public } from './decorators/public.decorator';
 
+@Public()
 @Controller('auth')
 export class AuthController {
   constructor(

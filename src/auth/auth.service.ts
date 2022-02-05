@@ -25,4 +25,13 @@ export class AuthService {
   generateAccessToken(email, userId): string {
     return this.jwtService.sign({ email, sub: userId }, { expiresIn: '7d' });
   }
+
+  getPayloadJwtToken(token: string): any {
+    try {
+      this.jwtService.verify(token);
+      return this.jwtService.decode(token);
+    } catch (err) {
+      return null;
+    }
+  }
 }
