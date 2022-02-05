@@ -28,6 +28,7 @@ export default {
     '~/plugins/vee-validate',
     '~/plugins/vue-toastification',
     '~/plugins/language',
+    '~/plugins/vue-cookies',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -72,6 +73,10 @@ export default {
         en: require('./locales/en.json'),
       },
     },
+  },
+
+  router: {
+    middleware: ['auth'],
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

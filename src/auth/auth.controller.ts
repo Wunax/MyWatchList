@@ -42,7 +42,7 @@ export class AuthController {
     res.cookie('loggedIn', true, {
       expires: dayjs().add(7, 'days').toDate(),
     });
-    res.status(200).send();
+    res.status(204).send();
   }
 
   @UseInterceptors(new SanitizeMongooseModelInterceptor())
@@ -57,5 +57,12 @@ export class AuthController {
       }
       throw new BadRequestException({ message: 'An error has occurred' });
     }
+  }
+
+  @Post('/logout')
+  async logout(@Response() res) {
+    res.clearCookie('accessToken');
+    res.clearCookie('loggedIn');
+    res.status(204).send();
   }
 }

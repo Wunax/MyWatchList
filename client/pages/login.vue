@@ -62,6 +62,7 @@ export default {
           email: this.email,
           password: this.password,
         });
+        await this.$router.push('/');
       } catch (err) {
         if (err?.response?.status === 401) {
           this.$toast.error(this.$t('login.errors.invalidCredentials'));
@@ -70,6 +71,9 @@ export default {
         }
       }
     },
+  },
+  meta: {
+    notLoggedIn: true,
   },
 };
 </script>
