@@ -2,6 +2,13 @@
   "login": {
     "title": "Login",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "signIn": "Sign In",
+    "errors": {
+      "invalidCredentials": "Email or password is invalid"
+    }
+  },
+  "errors": {
+    "internalError": "An internal error has occurred"
   }
 }

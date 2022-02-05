@@ -10,4 +10,8 @@
   .custom-label {
     @apply text-gray-700;
   }
+
+  .primary-button {
+    @apply text-white bg-indigo-600 rounded-md p-2 text-center;
+  }
 }

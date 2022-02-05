@@ -13,10 +13,15 @@ import {
 import { AuthUserDto } from './dto/auth.dto';
 import { AuthService } from './auth.service';
 import { SanitizeMongooseModelInterceptor } from 'nestjs-mongoose-exclude';
+import { ConfigService } from '@nestjs/config';
+import * as dayjs from 'dayjs';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly configService: ConfigService,
+  ) {}
 
   @Post('/login')
   async login(@Body() authUserDto: AuthUserDto, @Response() res) {
@@ -30,6 +35,12 @@ export class AuthController {
     );
     res.cookie('accessToken', accessToken, {
       httpOnly: true,
+      secure: this.configService.get<string>('NODE_ENV') === 'production',
+      expires: dayjs().add(7, 'days').toDate(),
+      sameSite: this.configService.get<string>('NODE_ENV') === 'production',
+    });
+    res.cookie('loggedIn', true, {
+      expires: dayjs().add(7, 'days').toDate(),
     });
     res.status(200).send();
   }

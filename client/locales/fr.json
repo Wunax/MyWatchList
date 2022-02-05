@@ -2,6 +2,13 @@
   "login": {
     "title": "Connexion",
     "email": "Email",
-    "password": "Mot de passe"
+    "password": "Mot de passe",
+    "signIn": "Se connecter",
+    "errors": {
+      "invalidCredentials": "Email ou mot de passe invalide"
+    }
+  },
+  "errors": {
+    "internalError": "Une erreur interne est survenue"
   }
 }

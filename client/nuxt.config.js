@@ -9,26 +9,25 @@ export default {
   head: {
     title: 'glo-3202',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/css/main.css',
-  ],
+  css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/vee-validate',
+    '~/plugins/vue-toastification',
+    '~/plugins/language',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -48,20 +47,22 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    'vue-toastification/nuxt',
   ],
 
   i18n: {
     strategy: 'no_prefix',
+    detectBrowserLanguage: false,
     locales: [
       {
         code: 'fr',
-        name: 'Français'
+        name: 'Français',
       },
       {
         code: 'en',
-        name: 'English'
-      }
+        name: 'English',
+      },
     ],
     defaultLocale: 'fr',
     vueI18n: {
@@ -69,13 +70,14 @@ export default {
       messages: {
         fr: require('./locales/fr.json'),
         en: require('./locales/en.json'),
-      }
+      },
     },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.BASE_URL || '/api'
+    baseURL: process.env.BASE_URL || '/api',
+    credentials: true,
   },
 
   server: {
@@ -91,5 +93,5 @@ export default {
         autoprefixer: {},
       },
     },
-  }
-}
+  },
+};
