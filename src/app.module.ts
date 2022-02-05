@@ -7,6 +7,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/guards/auth.guard';
+import { MoviesModule } from './movies/movies.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { AuthGuard } from './auth/guards/auth.guard';
     }),
     AuthModule,
     UsersModule,
+    MoviesModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: AuthGuard }],
 })

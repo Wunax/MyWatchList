@@ -27,4 +27,8 @@ export class UsersService {
     const user = new this.userModel({ email, password: hash });
     return user.save();
   }
+
+  async findById(id: string): Promise<UserDocument> {
+    return this.userModel.findById(id).populate('movies');
+  }
 }

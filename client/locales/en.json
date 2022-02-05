@@ -8,6 +8,16 @@
       "invalidCredentials": "Email or password is invalid"
     }
   },
+  "register": {
+    "title": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Password confirmation",
+    "signup": "Sign Up",
+    "errors": {
+      "emailAlreadyExists": "An account already exists with this email"
+    }
+  },
   "errors": {
     "internalError": "An internal error has occurred"
   }
