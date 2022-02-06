@@ -14,6 +14,7 @@
         <MovieCard
           v-for="movie in searchMovies"
           :key="movie.id"
+          :id-tmdb="movie.id"
           :release-date="movie.release_date"
           :title="movie.title"
           :description="movie.overview"
@@ -26,6 +27,7 @@
         <MovieCard
           v-for="movie in popularsMovies"
           :key="movie.id"
+          :id-tmdb="movie.id"
           :release-date="movie.release_date"
           :title="movie.title"
           :description="movie.overview"

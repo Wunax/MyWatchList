@@ -30,6 +30,7 @@ export default {
     '~/plugins/language',
     '~/plugins/vue-cookies',
     '~/plugins/vue-infinite-loading',
+    '~/plugins/auth',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

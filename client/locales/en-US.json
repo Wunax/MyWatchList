@@ -29,6 +29,18 @@
     "search": "Search a movie",
     "results": "Search results for '{search}'"
   },
+  "watchlist": {
+    "title": "My watchlist"
+  },
+  "watchlistSeen": {
+    "title": "Movies seen"
+  },
+  "movieCard": {
+    "addWatchlist": "Add to my watchlist",
+    "movieSeen": "I have seen this film",
+    "removeWatchlist": "Remove from my watchlist",
+    "removeMovie": "Remove this movie"
+  },
   "errors": {
     "internalError": "An internal error has occurred"
   }

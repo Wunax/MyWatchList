@@ -22,8 +22,12 @@ export class MoviesController {
 
   @Post()
   @HttpCode(201)
-  create(@Body() createMovieDto: CreateMovieDto, @Req() req: Request) {
-    return this.moviesService.create(createMovieDto, req.user.sub);
+  create(
+    @Body() createMovieDto: CreateMovieDto,
+    @Req() req: Request,
+    @Query('lang') lang,
+  ) {
+    return this.moviesService.create(createMovieDto, req.user.sub, lang);
   }
 
   @Get()

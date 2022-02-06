@@ -29,6 +29,18 @@
     "search": "Rechercher un film",
     "results": "Résultats de la recherche pour '{search}'"
   },
+  "watchlist": {
+    "title": "Ma watchlist"
+  },
+  "watchlistSeen": {
+    "title": "Films regardés"
+  },
+  "movieCard": {
+    "addWatchlist": "Ajouter à ma watchlist",
+    "movieSeen": "J'ai vu ce film",
+    "removeWatchlist": "Retirer de ma watchlist",
+    "removeMovie": "Retirer ce film"
+  },
   "errors": {
     "internalError": "Une erreur interne est survenue"
   }

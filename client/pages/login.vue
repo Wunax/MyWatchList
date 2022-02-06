@@ -67,6 +67,7 @@ export default {
           email: this.email,
           password: this.password,
         });
+        await this.$store.dispatch('user/fetchMovies');
         await this.$router.push('/');
       } catch (err) {
         if (err?.response?.status === 401) {

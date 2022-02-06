@@ -23,24 +23,26 @@ export class MoviesService {
     private readonly userService: UsersService,
   ) {}
 
-  async create(
-    createMovieDto: CreateMovieDto,
-    userId: string,
-  ): Promise<MovieDocument | Movie> {
+  async create(createMovieDto: CreateMovieDto, userId: string, lang: string) {
     try {
-      await lastValueFrom(
-        this.httpService.get(
-          `https://api.themoviedb.org/3/movie/${
-            createMovieDto.idTmdb
-          }?api_key=${this.configService.get<string>('TMDB_API_KEY')}`,
-        ),
-      );
+      let urlTmdbApi = `https://api.themoviedb.org/3/movie/${
+        createMovieDto.idTmdb
+      }?api_key=${this.configService.get<string>('TMDB_API_KEY')}`;
+      if (lang) {
+        urlTmdbApi += `&language=${lang}`;
+      }
+      const res = await lastValueFrom(this.httpService.get(urlTmdbApi));
       const user = await this.userService.findById(userId);
-      const existingMovie = user.movies.find(
+      const existingMovie: any = user.movies.find(
         (movie) => movie.idTmdb === createMovieDto.idTmdb,
       );
       if (existingMovie) {
-        return existingMovie;
+        return {
+          _id: existingMovie._id,
+          idTmdb: existingMovie.idTmdb,
+          seen: existingMovie.seen,
+          dataTmdb: res.data,
+        };
       }
       const movie = new this.movieModel({
         idTmdb: createMovieDto.idTmdb,
@@ -49,7 +51,12 @@ export class MoviesService {
       await movie.save();
       user.movies.push(movie);
       await user.save();
-      return movie;
+      return {
+        _id: movie._id,
+        idTmdb: movie.idTmdb,
+        seen: movie.seen,
+        dataTmdb: res.data,
+      };
     } catch (err) {
       if (err.response.status === 404) {
         throw new NotFoundException({ message: 'Movie not found' });
