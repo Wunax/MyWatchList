@@ -5,7 +5,7 @@
         v-model="searchText"
         type="text"
         class="px-4 py-2 focus:border-primary w-full"
-        placeholder="Search..."
+        :placeholder="$t('searchbar.search')"
         @input="checkInput"
       />
       <button

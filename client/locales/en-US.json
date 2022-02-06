@@ -35,6 +35,9 @@
   "watchlistSeen": {
     "title": "Movies seen"
   },
+  "searchbar": {
+    "search": "Search..."
+  },
   "movieCard": {
     "addWatchlist": "Add to my watchlist",
     "movieSeen": "I have seen this film",

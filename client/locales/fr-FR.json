@@ -41,6 +41,9 @@
     "removeWatchlist": "Retirer de ma watchlist",
     "removeMovie": "Retirer ce film"
   },
+  "searchbar": {
+    "search": "Rechercher..."
+  },
   "errors": {
     "internalError": "Une erreur interne est survenue"
   }
