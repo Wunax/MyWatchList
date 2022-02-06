@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'glo-3202',
+    title: 'GLO-3202 - MyWatchlist',
     htmlAttrs: {
       lang: 'en',
     },
