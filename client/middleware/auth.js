@@ -3,7 +3,7 @@ export default function ({ app, route, redirect }) {
   if (route?.meta[0]?.notLoggedIn && loggedIn) {
     return redirect('/');
   }
-  if (!loggedIn && route.path !== '/login' && route.path !== '/register') {
+  if (!loggedIn && route.name !== 'login' && route.name !== 'register') {
     return redirect('/login');
   }
 }
